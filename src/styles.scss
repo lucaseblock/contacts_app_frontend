@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.pointer {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.space-around {
+    justify-content: space-around;
+}
+
+.mat-elevation-z4 {
+    height: 100vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #673ab7;
+    > mat-card {
+        width: 500px;
+        p {
+            margin-bottom: 0;
+            padding: 16px;
+            text-align: center;
+        }
+    }
+}
+
+.error-snackbar-container,
+.success-snackbar-container {
+    > div {
+        padding: 0 !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+}
+
+.mat-mdc-dialog-actions {
+    padding-bottom: 20px !important;
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+}

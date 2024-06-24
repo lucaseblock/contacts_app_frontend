@@ -1,0 +1,17 @@
+div {
+	height: 24px;
+    margin-right: 5px;
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+  
+mat-icon {
+    animation: rotate 1s linear infinite;
+}

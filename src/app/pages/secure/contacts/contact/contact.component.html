@@ -1,0 +1,41 @@
+<mat-list-item>
+    <div class="contact-container">
+        <div>
+            <mat-icon color="primary">account_circle</mat-icon>
+            <span class="contact">
+                {{ contact.name }} {{ contact.last_name }}  
+                <mat-icon
+                    color="primary"
+                    class="pointer"
+                    (click)="callContact()"
+                    matTooltip="Call"
+                    matTooltipPosition="above"
+                >
+                    phone_forwarded
+                </mat-icon>
+                <span>{{ contact.phone }}</span>
+            </span>
+        </div>
+        <div>
+            <mat-icon
+                color="accent"
+                class="pointer"
+                matTooltip="Edit contact"
+                matTooltipPosition="left"
+                (click)="editContact()"
+            >
+                edit
+            </mat-icon>
+            <mat-icon
+                color="warn"
+                class="pointer"
+                matTooltip="Delete contact"
+                matTooltipPosition="right"
+                (click)="deleteContact()"
+            >
+                delete
+            </mat-icon>
+        </div>
+    </div>
+</mat-list-item>
+<mat-divider></mat-divider>

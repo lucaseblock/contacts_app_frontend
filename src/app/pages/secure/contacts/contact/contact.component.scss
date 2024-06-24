@@ -1,0 +1,30 @@
+mat-list-item {
+    width: 100%;
+}
+
+mat-list-item:hover {
+    background-color: #f7f4fb;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .mat-icon {
+        margin: 10px;
+    }
+    > div {
+        display: flex;
+        align-items: center;
+    }
+    .contact {
+        display: flex;
+        align-items: center;
+        span {
+            color: #673ab7;
+        }
+        mat-icon {
+            margin-left: 30px;
+        }
+    }
+}

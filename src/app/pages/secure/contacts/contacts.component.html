@@ -1,0 +1,16 @@
+<header></header>
+<div class="container">
+    <div>
+        <button mat-flat-button color="primary" (click)="addContact()">
+            <mat-icon>add_circle</mat-icon> CONTACT</button>
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-label>Search Contacts</mat-label>
+            <input matInput [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange($event)" placeholder="Enter name">
+        </mat-form-field>
+    </div>
+    <mat-list>
+        <ng-container *ngFor="let contact of filteredContacts">
+            <contact [contact]="contact" (getContacts)="getContacts()"></contact>
+        </ng-container>
+    </mat-list>
+</div>

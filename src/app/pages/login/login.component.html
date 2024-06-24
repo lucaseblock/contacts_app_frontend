@@ -1,0 +1,28 @@
+<div class="mat-elevation-z4">
+    <mat-card>
+        <mat-card-content>
+            <form class="flex column" [formGroup]="loginForm" (ngSubmit)="login()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                </mat-form-field>
+                <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="loginForm.invalid"
+                >
+                    <div class="button-content">
+                        <loading-icon *ngIf="loadingLogin"></loading-icon>
+                        <span>Log in</span>
+                    </div>
+                </button>
+            </form>
+        </mat-card-content>
+        <p>If you don't have an account, sign up <a routerLink="/register">here</a></p>
+    </mat-card>
+</div>
