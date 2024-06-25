@@ -1,0 +1,15 @@
+span.passwords-match {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding-bottom: 16px;
+    mat-icon {
+        margin-right: 5px;
+    }
+    mat-icon.error {
+        color: red;
+    }
+    mat-icon.success {
+        color: green;
+    }
+}

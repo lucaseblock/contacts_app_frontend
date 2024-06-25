@@ -7,21 +7,32 @@
 					<input matInput formControlName="username">
 				</mat-form-field>
 				<mat-form-field appearance="outline">
-					<mat-label>Password</mat-label>
-					<input matInput type="password" formControlName="password">
-				</mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+                    <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                </mat-form-field>
 				<mat-form-field appearance="outline">
-					<mat-label>Confirm Password</mat-label>
-					<input matInput type="password" formControlName="confirmPassword">
-					<mat-error *ngIf="registerForm.hasError('passwordsNotMatch')">
-						Passwords do not match.
-					</mat-error>
-				</mat-form-field>
+                    <mat-label>Confirm password</mat-label>
+                    <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword">
+                    <button type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
+                        <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                </mat-form-field>
+				<span
+					*ngIf="registerForm.get('password')?.value && registerForm.get('confirmPassword')?.value"
+					class="passwords-match"
+				>
+					<mat-icon *ngIf="!passwordsMatch" class="error">block</mat-icon>
+					<mat-icon *ngIf="passwordsMatch" class="success">check</mat-icon>
+					Passwords match
+				</span>
 				<button
 					mat-raised-button
 					color="primary"
 					type="submit"
-					[disabled]="registerForm.invalid"
+					[disabled]="registerForm.invalid || loadingRegister"
 				>
 					<div class="button-content">
 						<loading-icon *ngIf="loadingRegister"></loading-icon>

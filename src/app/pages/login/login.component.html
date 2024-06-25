@@ -8,13 +8,16 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput type="password" formControlName="password">
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+                    <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
                 </mat-form-field>
                 <button
                     mat-raised-button
                     color="primary"
                     type="submit"
-                    [disabled]="loginForm.invalid"
+                    [disabled]="loginForm.invalid || loadingLogin"
                 >
                     <div class="button-content">
                         <loading-icon *ngIf="loadingLogin"></loading-icon>

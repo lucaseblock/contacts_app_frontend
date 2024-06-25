@@ -13,6 +13,8 @@ import { UiService } from 'src/app/common/services/ui.service';
 export class RegisterComponent {
   	public registerForm: FormGroup;
 	public loadingRegister: boolean = false;
+	public hidePassword: boolean = true;
+	public hideConfirmPassword: boolean = true;
 
 	constructor(private sessionService: SessionService, private router: Router, private formBuilder: FormBuilder, private uiService: UiService) {
 		this.registerForm = this.formBuilder.group({
@@ -37,5 +39,9 @@ export class RegisterComponent {
 			this.loadingRegister = false;
 		}
   	}
+
+	get passwordsMatch(): boolean {
+		return !this.registerForm.hasError('passwordsNotMatch') && this.registerForm.get('password')?.value;
+	}
 
 }

@@ -25,7 +25,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #673ab7;
+    background-image: url('./assets/images/cover.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     > mat-card {
         width: 500px;
         p {

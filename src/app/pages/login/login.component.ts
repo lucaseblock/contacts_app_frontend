@@ -11,6 +11,7 @@ import { SessionService } from 'src/app/common/services/session.service';
 export class LoginComponent {
  	public loginForm: FormGroup;
 	public loadingLogin: boolean = false;
+	public hidePassword: boolean = true;
 
 	constructor(private sessionService: SessionService, private router: Router, private formBuilder: FormBuilder) {
 		this.loginForm = this.formBuilder.group({
