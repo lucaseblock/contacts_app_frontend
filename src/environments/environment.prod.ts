@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    base_url: 'https://adminpro--backend.herokuapp.com/api'
+    base_url: 'https://contacts-app-backend-a7fk.onrender.com/api'
 };
