@@ -19,6 +19,7 @@ import { ErrorInterceptor } from './common/services/http/interceptos/error.inter
 import { ErrorSnackbarComponent } from './common/components/error-snackbar/error-snackbar.component';
 import { SuccessSnackbarComponent } from './common/components/success-snackbar/success-snackbar.component';
 import { LoadingIconComponent } from './common/components/loading-icon/loading-icon.component';
+import { LoadingSpinnerComponent } from './common/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +31,10 @@ import { LoadingIconComponent } from './common/components/loading-icon/loading-i
 		ContactComponent,
 		QuestionDialogComponent,
 		AddEditContactComponent,
-  ErrorSnackbarComponent,
-  SuccessSnackbarComponent,
-  LoadingIconComponent,
+		ErrorSnackbarComponent,
+		SuccessSnackbarComponent,
+		LoadingIconComponent,
+		LoadingSpinnerComponent,
   	],
 	imports: [
 		BrowserModule,

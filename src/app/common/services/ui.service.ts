@@ -14,6 +14,8 @@ import { SuccessSnackbarComponent } from '../components/success-snackbar/success
 })
 export class UiService {
 
+	private loadingSpinner: boolean = false;
+
   	constructor(private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
 	public async showQuestionDialog(title: string, question: string, panelClass: string = 'full-screen-modal') {
@@ -58,5 +60,17 @@ export class UiService {
 			duration: 2000,
 			panelClass: ['success-snackbar-container']
 		});
+	}
+
+	public showLoadingSpinner(): void {
+		this.loadingSpinner = true;
+	}
+	
+	public hideLoadingSpinner(): void {
+		this.loadingSpinner = false;
+	}
+	
+	public get spinnerIsLoading(): boolean {
+		return this.loadingSpinner;
 	}
 }

@@ -10,24 +10,28 @@ import { Contact, ContactForm } from 'src/app/types/contacts';
 })
 export class ContactComponent {
   	@Input() contact!: Contact;
-	@Output() getContacts: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output() getContacts: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
 	constructor(private uiService: UiService, private contactsService: ContactsService) {}
 
 	public async editContact(): Promise<void> {
 		let res: ContactForm = await this.uiService.showFormDialog('Edit contact', this.contact);
 		if (res) {
+			this.uiService.showLoadingSpinner();
 			await this.contactsService.editContact(this.contact.id, res);
 			this.getContacts.emit(true);
+			this.uiService.openSuccessSnackBar('Contact updated');
 		}
 	}
 
 	public async deleteContact(): Promise<void> {
 		const lastName: string = this.contact.last_name ? ` ${this.contact.last_name}` : '';
-		let ret = await this.uiService.showQuestionDialog('Delete contact', `Are you sure you want to delete ${this.contact.name}${lastName}?`);
-		if (ret) {
+		let res = await this.uiService.showQuestionDialog('Delete contact', `Are you sure you want to delete ${this.contact.name}${lastName}?`);
+		if (res) {
+			this.uiService.showLoadingSpinner();
 			await this.contactsService.deleteContact(this.contact.id);
 			this.getContacts.emit(true);
+			this.uiService.openSuccessSnackBar('Contact deleted');
 		}
 	}
 

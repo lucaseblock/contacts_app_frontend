@@ -19,6 +19,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 			catchError((error: HttpErrorResponse) => {
 				const errorMessage = error.error.error || 'Something went wrong';
 				this.uiService.openErrorSnackBar(errorMessage);
+				this.uiService.hideLoadingSpinner();
 				return EMPTY;
 			})
 		);

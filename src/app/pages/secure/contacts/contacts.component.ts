@@ -13,9 +13,10 @@ export class ContactsComponent implements OnInit {
 	public filteredContacts: Contact[] = [];
 	public searchTerm: string = '';
 
-  	constructor(private contactsService: ContactsService, private uiService: UiService) { }
+  	constructor(private contactsService: ContactsService, private uiService: UiService) {}
 
 	ngOnInit(): void {
+		this.uiService.showLoadingSpinner();
 		this.getContacts();
 	}
 
@@ -24,6 +25,7 @@ export class ContactsComponent implements OnInit {
 		this.contacts.sort((a, b) => a.name.localeCompare(b.name));
 		this.filteredContacts = this.contacts;
 		this.searchTerm = '';
+		this.uiService.hideLoadingSpinner();
 	}
 	
 	private filterContacts(searchTerm: string): void {
@@ -39,9 +41,15 @@ export class ContactsComponent implements OnInit {
 	public async addContact(): Promise<void> {
 		let res: ContactForm = await this.uiService.showFormDialog('New contact');
 		if (res) {
+			this.uiService.showLoadingSpinner();
 			await this.contactsService.addContact(res);
+			this.uiService.openSuccessSnackBar('Contact added');
 			this.getContacts();
 		}
+	}
+
+	get showLoadingSpinner (): boolean {
+		return this.uiService.spinnerIsLoading;
 	}
 
 }
